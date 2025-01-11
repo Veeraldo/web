@@ -29,9 +29,9 @@ class OrderResource extends Resource
             ->schema([
                 //
                 // Form Input untuk customer_id
-                Select::make('customer_id')
-                    ->label('Customer')
-                    ->relationship('customer', 'name')
+                Select::make('user_id') // Relasi ke model User
+                    ->label('Customer') // Label untuk kolom
+                    ->relationship('user', 'name') // Menggunakan relasi 'user' dan menampilkan 'name' dari tabel users
                     ->required(),
 
                 // Form Input untuk total_price
@@ -69,7 +69,7 @@ class OrderResource extends Resource
                     ->sortable()
                     ->searchable(),
 
-                TextColumn::make('customer.name')
+                TextColumn::make('users.id')
                     ->label('Customer')
                     ->sortable()
                     ->searchable(),
