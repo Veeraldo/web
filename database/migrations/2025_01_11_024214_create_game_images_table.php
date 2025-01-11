@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('games', function (Blueprint $table) {
-            $table->string('title')->after('id'); // Menambahkan kolom title setelah id
+        Schema::create('game_images', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('game_id')->constrained('games')->onDelete('cascade');
+            $table->string('image_path');
+            $table->timestamps();
         });
     }
 
@@ -21,9 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('games', function (Blueprint $table) {
-            //
-            $table->dropColumn('title');
-        });
+        Schema::dropIfExists('game_images');
     }
 };
