@@ -12,7 +12,7 @@ class Order extends Model
 
     // Kolom yang dapat diisi secara massal
     protected $fillable = [
-        'customer_id',
+        'user_id',
         'total_price',
         'status',
     ];
@@ -24,9 +24,9 @@ class Order extends Model
      * Relasi ke Customer (many-to-one).
      * Setiap order dimiliki oleh satu customer.
      */
-    public function customer()
+    public function user()
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(User::class);
     }
 
     /**
